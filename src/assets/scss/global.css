@@ -1,0 +1,218 @@
+.button .css-sghohy-MuiButtonBase-root-MuiButton-root {
+  text-transform: none;
+  font-size: 1.5rem;
+  color: #686868;
+  background: #232324;
+  box-shadow: none;
+  padding: 0.7rem 3rem;
+}
+.button .css-sghohy-MuiButtonBase-root-MuiButton-root:hover {
+  background: #2d2f2f;
+  box-shadow: none;
+}
+
+.icon-button .css-78trlr-MuiButtonBase-root-MuiIconButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.icon-button .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  color: inherit;
+}
+
+.select .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  color: white !important;
+}
+.select .MuiSelect-select {
+  color: white !important;
+  transform: translate(1rem);
+}
+.select .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon,
+.select .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+.select .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon path,
+.select .css-bpeome-MuiSvgIcon-root-MuiSelect-icon path {
+  fill: white;
+}
+.select .MuiInputBase-root {
+  width: 10rem;
+}
+.select .css-wgai2y-MuiFormLabel-asterisk {
+  color: white !important;
+  font-size: 1.4rem;
+}
+.select .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  color: #686868;
+  font-size: 1.6rem;
+}
+.select .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  color: white;
+  font-size: 1.6rem;
+}
+.select .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: lightgray;
+}
+.select .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+.select .Mui-focused {
+  border-color: white;
+}
+.select .css-14lo706 {
+  color: white;
+}
+.select .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: white;
+}
+.select .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+  color: white;
+  font-size: 1.4rem;
+}
+.select .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover {
+  border-color: white;
+}
+.select .MuiOutlinedInput-notchedOutline {
+  border-color: white !important;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding: 0 0 !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  color: black !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
+  background: lightgray !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+  background: gray !important;
+}
+
+*,
+*:after,
+*:before {
+  font-size: 10px;
+  font-family: "Source Sans Pro", sans-serif !important;
+  box-sizing: border-box;
+}
+
+:root {
+  background: #1d1d1f;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+:root {
+  --main-background: #ffffff;
+  --background: #f0f4fb;
+  --main: #0e1f54;
+  --foreground: #7e8db7;
+  --default-icon: #7e8db7;
+  --shadow: rgba(126, 141, 183, 0.2);
+  --main-text: #0e1f54;
+  --progress: #d7ddec;
+  --white: #ffffff;
+  --shadow-blue: rgba(6, 106, 255, 0.25);
+  --checkbox: #7e8db7;
+  --hover: rgba(126, 141, 183, 0.1);
+  --nabvar-background: #0e1f54;
+  --navbar-icon: #526496;
+  --navbar-title: rgba(255, 255, 255, 0.8);
+  --navbar-hover: rgba(0, 0, 0, 0.15);
+  --empty-message: #bbc5e3;
+  --opposite-background: #171a1f;
+  --auth-shadow: rgba(126, 141, 183, 0.2);
+  --helper-text-shadow: rgba(126, 141, 183, 0.5);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --violet: #d313e5;
+    --blue: #066aff;
+    --main-background: #23252f;
+    --background: #171a1f;
+    --main: #0e1f54;
+    --foreground: #7e8db7;
+    --red: #e15252;
+    --default-icon: #c0ccee;
+    --shadow: #141517;
+    --main-text: #cad1e8;
+    --progress: #444c61;
+    --shadow-blue: #141517;
+    --white: #ffffff;
+    --checkbox: #7e8db7;
+    --hover: rgba(126, 141, 183, 0.1);
+    --nabvar-background: #181f36;
+    --navbar-icon: #526496;
+    --navbar-title: rgba(255, 255, 255, 0.8);
+    --navbar-hover: rgba(0, 0, 0, 0.15);
+    --empty-message: #535968;
+    --opposite-background: #f0f4fb;
+    --auth-shadow: rgba(0, 0, 0, 0.2);
+    color-scheme: dark;
+  }
+}
+:root[color-scheme=light] {
+  --main-background: #ffffff;
+  --background: #f0f4fb;
+  --main: #0e1f54;
+  --foreground: #7e8db7;
+  --default-icon: #7e8db7;
+  --shadow: rgba(126, 141, 183, 0.2);
+  --main-text: #0e1f54;
+  --progress: #d7ddec;
+  --white: #ffffff;
+  --shadow-blue: rgba(6, 106, 255, 0.25);
+  --checkbox: #7e8db7;
+  --hover: rgba(126, 141, 183, 0.1);
+  --nabvar-background: #0e1f54;
+  --navbar-icon: #526496;
+  --navbar-title: rgba(255, 255, 255, 0.8);
+  --navbar-hover: rgba(0, 0, 0, 0.15);
+  --empty-message: #bbc5e3;
+  --opposite-background: #171a1f;
+  --auth-shadow: rgba(126, 141, 183, 0.2);
+  --helper-text-shadow: rgba(126, 141, 183, 0.5);
+  color-scheme: light;
+}
+
+:root[color-scheme=dark] {
+  --violet: #d313e5;
+  --blue: #066aff;
+  --main-background: #23252f;
+  --background: #171a1f;
+  --main: #0e1f54;
+  --foreground: #7e8db7;
+  --red: #e15252;
+  --default-icon: #c0ccee;
+  --shadow: #141517;
+  --main-text: #cad1e8;
+  --progress: #444c61;
+  --shadow-blue: #141517;
+  --white: #ffffff;
+  --checkbox: #7e8db7;
+  --hover: rgba(126, 141, 183, 0.1);
+  --nabvar-background: #181f36;
+  --navbar-icon: #526496;
+  --navbar-title: rgba(255, 255, 255, 0.8);
+  --navbar-hover: rgba(0, 0, 0, 0.15);
+  --empty-message: #535968;
+  --opposite-background: #f0f4fb;
+  --auth-shadow: rgba(0, 0, 0, 0.2);
+  color-scheme: dark;
+}
+
+/*# sourceMappingURL=global.css.map */

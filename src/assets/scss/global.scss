@@ -1,0 +1,50 @@
+@import "light_theme";
+@import "dark_theme";
+@import "overrides";
+@import "src/assets/scss/functions";
+
+*,
+*:after,
+*:before {
+  font-size: calc(10px);
+  font-family: "Source Sans Pro", sans-serif !important;
+  box-sizing: border-box;
+}
+//.container{
+//  height: 100vh;
+//}
+:root{
+  background: getColor(main);
+}
+body{
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+:root {
+  @each $name, $color in $light-theme {
+    --#{$name}: #{$color};
+  }
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    @each $name, $color in $dark-theme {
+      --#{$name}: #{$color};
+    } color-scheme:dark;
+  }
+}
+:root[color-scheme="light"] {
+  @each $name, $color in $light-theme {
+    --#{$name}: #{$color};
+  }
+  color-scheme:light;
+}
+:root[color-scheme="dark"] {
+  @each $name, $color in $dark-theme {
+    --#{$name}: #{$color};
+  }
+  color-scheme:dark;
+
+}

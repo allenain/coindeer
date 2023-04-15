@@ -1,0 +1,10 @@
+@import "src/assets/scss/functions";
+.sparkline{
+  padding-right: 2rem;
+}
+.green{
+   stroke: getColor(green);
+}
+.red{
+  stroke: getColor(red);
+}

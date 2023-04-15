@@ -1,0 +1,190 @@
+@import "src/assets/scss/functions";
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+.top-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 10rem;
+  gap: 2rem;
+  @media (max-width: 728px) {
+    align-items: start;
+  }
+  & > h1 {
+    display: flex;
+    font-size: 1.5rem;
+    color: getColor(dark-gray);
+    gap: 0.5rem;
+    & > p {
+      font-size: inherit;
+      color: getColor(main-text);
+    }
+    @media (max-width: 750px) {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 1642px) {
+    padding: 3rem;
+  }
+}
+.buttons {
+  display: flex;
+  gap: 2rem;
+  & > button {
+    width: 15rem;
+    & > p {
+      font-size: 1rem;
+    }
+  }
+  & > button:last-child {
+    display: flex;
+    gap: 0.5rem;
+    & > svg {
+      height: 2rem;
+      fill: getColor(gray);
+    }
+  }
+  @media (max-width: 529px) {
+    flex-wrap: wrap;
+    justify-content: end;
+  }
+}
+
+.table {
+  padding: 0 10rem;
+  overflow-x: auto;
+  @media (max-width: 1642px) {
+    padding: 0;
+  }
+}
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  color: getColor(gray);
+}
+thead {
+  th:first-child {
+    & > div {
+      padding: 1rem 0 1rem 6rem;
+    }
+  }
+  th {
+    & > div {
+      gap: 1rem;
+      display: flex;
+      align-items: center;
+      & > p {
+      }
+      & > div {
+        & > button {
+          & > svg {
+            fill: getColor(gray);
+            height: 1.4rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.column, .title {
+  white-space: nowrap;
+  background: getColor(button);
+  height: 6rem;
+  padding: 0 3rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  &.column:hover {
+    transition: 0.2s;
+    & > p {
+      opacity: 0.7;
+    }
+    & > div {
+      opacity: 0.3;
+    }
+  }
+  & > div {
+    transition: 0.2s;
+    opacity: 0;
+  }
+  p {
+    font-size: 1.5rem;
+    color: getColor(gray);
+  }
+  svg {
+    height: 2rem;
+    fill: getColor(gray);
+    transition: 0.2s;
+    transform: rotate(180deg);
+  }
+  &.asc,
+  &.desc {
+    transition: 0.5s;
+
+    & > div {
+      opacity: 1;
+    }
+    &:hover > div {
+      opacity: 1;
+    }
+  }
+  &.desc {
+    svg {
+      transform: rotate(0);
+    }
+  }
+}
+.bottom-panel {
+  & > div {
+    display: flex;
+    align-items: center;
+    & > p {
+      color: getColor(foreground);
+      font-size: 1.7rem;
+      margin: 0 2rem;
+    }
+  }
+  justify-content: end;
+  width: 100%;
+  height: 12rem;
+  display: flex;
+  align-items: center;
+
+  .icon-button {
+    & > button {
+      & > svg {
+        height: 3rem;
+        fill: getColor(foreground);
+      }
+    }
+  }
+  @media (max-width: 1642px) {
+    padding: 2rem 3rem;
+    flex-wrap: wrap;
+    & > div{
+      & > p {
+        font-size: 1.5rem;
+        white-space: nowrap;
+      }
+    }
+  }
+  @media (max-width: 400px){
+    padding: 1rem;
+  }
+}
+.disabled {
+  fill: getColor(dark-gray) !important;
+}
+.empty_message{
+  color: getColor(dark-gray);
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}

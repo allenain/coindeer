@@ -1,0 +1,101 @@
+@import "src/assets/scss/functions";
+
+.button{
+  .css-sghohy-MuiButtonBase-root-MuiButton-root{
+    text-transform: none;
+    font-size: 1.5rem;
+    color: getColor(gray);
+    background: getColor(button);
+    box-shadow: none;
+    padding: 0.7rem 3rem;
+  }
+  .css-sghohy-MuiButtonBase-root-MuiButton-root:hover{
+    background: getColor(hover);
+    box-shadow: none;
+  }
+}
+.icon-button{
+  .css-78trlr-MuiButtonBase-root-MuiIconButton-root:hover{
+    background-color: rgb(255 255 255 / 4%);
+  }
+  .css-78trlr-MuiButtonBase-root-MuiIconButton-root{
+    color: getColor(foreground);
+  }
+}
+
+.select{
+  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+    color: getColor(foreground)!important;
+  }
+  .MuiSelect-select {
+    color:getColor(foreground) !important;
+    transform: translate(1rem);
+  }
+  .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon,
+  .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+    color: getColor(foreground);
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    path {
+      fill: getColor(foreground);
+    }
+  }
+  .MuiInputBase-root{
+    width: 10rem;
+  }
+  .css-wgai2y-MuiFormLabel-asterisk {
+    color: getColor(foreground) !important;
+    font-size: 1.4rem;
+  }
+  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+    color: getColor(foreground);
+    font-size: 1.6rem;
+  }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+    color: getColor(foreground);
+    font-size: 1.6rem;
+  }
+  .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+    border-color: getColor(gray);
+  }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+    border-color: getColor(foreground);
+  }
+  .Mui-focused{
+    border-color: getColor(foreground);
+  }
+  .css-14lo706{
+    color: getColor(foreground);
+  }
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: getColor(foreground);
+  }
+  .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+    color: getColor(foreground);
+    font-size: 1.4rem;
+  }
+  .css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover{
+    border-color: getColor(foreground);
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: getColor(foreground) !important;
+  }
+}
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding: 0 0 !important;
+}
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  color: getColor(foreground) !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+}
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
+  background: getColor(button) !important;
+}
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+  background: getColor(button) !important;
+}
+.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
+  background: getColor(main)!important;
+}

@@ -1,0 +1,67 @@
+@import "src/assets/scss/functions";
+
+.positive {
+  color: getColor(green);
+}
+.negative {
+  color: getColor(red);
+}
+tbody {
+  & > tr:last-child {
+    border-bottom: 1px solid getColor(border);
+  }
+  & > tr:last-child:hover {
+    border-bottom: 1px solid getColor(foreground);
+  }
+}
+tr {
+  //transition: 3s;
+  position: relative;
+  border-top: 0.1rem solid getColor(border);
+  //border-bottom: 0.1rem solid #2d2f2f;
+  & > td:first-child {
+    padding: 2rem 0 2rem 6rem;
+
+  }
+  & > td:last-child {
+    padding: 2rem 3rem;
+  }
+  & > td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    & > p {
+      font-size: inherit;
+      color: dimgray;
+      text-transform: uppercase;
+    }
+    & > img {
+      height: 2rem;
+    }
+  }
+}
+tr:hover {
+  background: getColor(table-hover);
+  border-top: 0.1rem solid getColor(border-hover);
+  border-bottom: 0.1rem solid getColor(border-hover);
+  .star {
+    opacity: 1;
+  }
+}
+td {
+  padding: 2rem 0 2rem 3rem;
+  line-height: 3rem;
+  font-size: 1.5rem;
+  color: getColor(main-text);
+}
+.star {
+  position: absolute;
+  top: 2.3rem;
+  left: 2rem;
+  height: 2rem;
+  opacity: 0;
+}
+.favorite {
+  stroke: getColor(gold);
+  fill: getColor(gold);
+}

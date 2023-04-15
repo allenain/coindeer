@@ -1,17 +1,28 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  ActionCreatorsMapObject,
+} from "@reduxjs/toolkit";
+import { useMemo } from "react";
+import counterReducer from "../features/counter/counterSlice";
+import { coinsReducer } from "../features/main/tableData/table/Table.slice";
+import { useAppDispatch } from "./hooks";
+import { BoundActions } from "./store.types";
+import bindActionCreators from "react-redux/es/utils/bindActionCreators";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    coinsReducer,
   },
 });
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export const useBoundActions = <Actions extends ActionCreatorsMapObject>(
+  actions: Actions
+): BoundActions<Actions> => {
+  const dispatch = useAppDispatch();
+
+  // @ts-ignore
+  return useMemo(() => bindActionCreators(actions, dispatch), []);
+};
