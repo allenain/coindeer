@@ -16,38 +16,67 @@ tbody {
 }
 tr {
   //transition: 3s;
-  position: relative;
   border-top: 0.1rem solid getColor(border);
   //border-bottom: 0.1rem solid #2d2f2f;
   & > td:first-child {
-    padding: 2rem 0 2rem 6rem;
+    position: relative;
 
+    padding: 2rem 0 2rem 6rem;
   }
   & > td:last-child {
     padding: 2rem 3rem;
+    position: relative;
   }
+  & > td:last-child:before {
+    content:  '';
+    position: absolute;
+    width: 10rem;
+    height: 100%;
+    background: linear-gradient(90deg, getColor(main), transparent);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
   & > td:nth-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    & > p {
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
       font-size: inherit;
-      color: dimgray;
-      text-transform: uppercase;
-    }
-    & > img {
-      height: 2rem;
+      & > p {
+        font-size: inherit;
+        color: dimgray;
+        text-transform: uppercase;
+      }
+      & > img {
+        height: 2rem;
+      }
     }
   }
 }
 tr:hover {
+  & > td:last-child:before {
+    content:  '';
+    position: absolute;
+    width: 10rem;
+    height: 100%;
+    background: linear-gradient(90deg, getColor(table-hover), transparent);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
   background: getColor(table-hover);
   border-top: 0.1rem solid getColor(border-hover);
   border-bottom: 0.1rem solid getColor(border-hover);
   .star {
     opacity: 1;
   }
+
 }
+
 td {
   padding: 2rem 0 2rem 3rem;
   line-height: 3rem;
@@ -56,10 +85,16 @@ td {
 }
 .star {
   position: absolute;
-  top: 2.3rem;
+  top: 37%;
   left: 2rem;
   height: 2rem;
   opacity: 0;
+  @media (min-width: 2460px){
+    top: 43%;
+  }
+  @media (max-width: 1642px){
+    top: 35%;
+  }
 }
 .favorite {
   stroke: getColor(gold);

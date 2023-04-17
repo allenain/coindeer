@@ -27,3 +27,10 @@ export type TFetchCoinsRequest = {
   order: string | null;
   sort: "asc" | "desc" | null;
 };
+
+export type TGlobal = {
+  data: {
+    total_market_cap: Record<string, number>;
+    total_volume: Record<string, number>;
+  };
+};

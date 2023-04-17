@@ -1,18 +1,17 @@
 import Button from "@mui/material/Button";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./TableData.module.scss";
 import SvgSelector from "../../../components/svgSelector/SvgSelector";
 import "../../../assets/scss/overrides.scss";
 import clsx from "clsx";
 import Table from "./table/Table";
-import { coinsActions, fetchCoins } from "./table/Table.slice";
+import { coinsActions, fetchCoins, fetchGlobal } from "./table/Table.slice";
 import { useBoundActions } from "../../../app/store";
 import { useAppSelector } from "../../../app/hooks";
 import { useSnackbar } from "notistack";
 import { TCoinCell, TOption } from "./TableData.types";
 import {
   FormControl,
-  getCollapseUtilityClass,
   IconButton,
   InputLabel,
   MenuItem,
@@ -22,6 +21,7 @@ import {
 
 const allActions = {
   fetchCoins,
+  fetchGlobal,
   ...coinsActions,
 };
 const coinsCells: TCoinCell[] = [
@@ -48,21 +48,6 @@ const coinsCells: TCoinCell[] = [
   { name: "7d chart", value: "график", sortable: false },
 ];
 
-const compare = (
-  a: Record<string, any>,
-  b: Record<string, any>,
-  sortable: string | null,
-  sort: "asc" | "desc" | null
-) => {
-  if (!sortable || !sort) return 0;
-  if (a[sortable] < b[sortable]) {
-    return sort === "asc" ? -1 : 1;
-  }
-  if (a[sortable] > b[sortable]) {
-    return sort === "asc" ? 1 : -1;
-  }
-  return 0;
-};
 const rowsPerPageOptions: TOption[] = [
   { value: 5, label: "5" },
   { value: 10, label: "10" },
@@ -78,11 +63,9 @@ const TableData = () => {
   const status = useAppSelector((state) => state.coinsReducer.status);
 
   const [selectedPage, setSelectedPage] = useState<number>(1);
-  const [disabled, setDisabled] = useState<boolean>(false);
   const [sort, setSort] = useState<"asc" | "desc" | null>(null);
   const [order, setOrder] = useState<string | null>(null);
   const [rowsPerPage, setRowsPerPage] = useState("5");
-  // const pages = Math.ceil(coins.length / rowsPerPage);
   const pages = 1000;
   const handleChange = (event: SelectChangeEvent) => {
     setRowsPerPage(event.target.value);
@@ -111,6 +94,7 @@ const TableData = () => {
 
   const arrayForSort = [...coins];
   useEffect(() => {
+    boundActions.fetchGlobal();
     const scroll = window.scrollY;
     boundActions
       .fetchCoins({ rowsPerPage, page: selectedPage, sort, order })
@@ -142,38 +126,38 @@ const TableData = () => {
         {status === "idle" && (
           <table>
             <thead>
-              {coinsCells.map((cell) => (
-                <th>
-                  <div
-                    className={clsx(classes.title, {
-                      [classes.asc]: order === cell.name && sort === "asc",
-                      [classes.desc]: order === cell.name && sort === "desc",
-                      [classes.column]: cell.sortable,
-                    })}
-                  >
-                    <p>{cell.name}</p>
+              <tr>
+                {coinsCells.map((cell) => (
+                  <th key={cell.name}>
                     <div
-                      className="icon-button"
-                      onClick={() =>
-                        handleSort(sort, cell.sortable, cell.value)
-                      }
+                      className={clsx(classes.title, {
+                        [classes.asc]: order === cell.name && sort === "asc",
+                        [classes.desc]: order === cell.name && sort === "desc",
+                        [classes.column]: cell.sortable,
+                      })}
                     >
-                      {cell.sortable && (
-                        <IconButton onClick={() => handleSort}>
-                          <SvgSelector id="arrow_sort" />
-                        </IconButton>
-                      )}
+                      <p>{cell.name}</p>
+                      <div
+                        className="icon-button"
+                        onClick={() =>
+                          handleSort(sort, cell.sortable, cell.value)
+                        }
+                      >
+                        {cell.sortable && (
+                          <IconButton onClick={() => handleSort}>
+                            <SvgSelector id="arrow_sort" />
+                          </IconButton>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </th>
-              ))}
+                  </th>
+                ))}
+              </tr>
             </thead>
             <tbody>
-              {arrayForSort
-                // .sort((a, b) => compare(a, b, order, sort))
-                .map((coin) => (
-                  <Table key={coin.id} data={coin} />
-                ))}
+              {arrayForSort.map((coin) => (
+                <Table key={coin.id} data={coin} />
+              ))}
             </tbody>
           </table>
         )}
@@ -190,7 +174,9 @@ const TableData = () => {
               <InputLabel>Rows</InputLabel>
               <Select value={rowsPerPage} label="Rows" onChange={handleChange}>
                 {rowsPerPageOptions.map((option) => (
-                  <MenuItem value={option.value}>{option.label}</MenuItem>
+                  <MenuItem key={option.label} value={option.value}>
+                    {option.label}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>

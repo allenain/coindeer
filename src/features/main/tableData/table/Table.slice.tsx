@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { TCoin, TFetchCoinsRequest } from "../TableData.types";
+import { TCoin, TFetchCoinsRequest, TGlobal } from "../TableData.types";
 import { coinsApi } from "../../../../api/coinsApi/coins.api";
 import {
   isFulfilledAction,
   isPendingAction,
   isRejectedAction,
 } from "../../../../utils";
+import { globalApi } from "../../../../api/globalApi/global.api";
 
 export interface ICategoriesState {
   coins: TCoin[];
+  global: TGlobal;
   message: any;
   status: "idle" | "loading" | "failed";
   meta: {
@@ -21,6 +23,7 @@ export interface ICategoriesState {
 
 export const initialState: ICategoriesState = {
   coins: [],
+  global: { data: { total_market_cap: {}, total_volume: {} } },
   message: "",
   status: "idle",
   meta: {
@@ -44,7 +47,7 @@ const coinsSlice = createSlice({
       state.coins = payload;
       state.meta.fetching = false;
     });
-    builder.addCase(fetchCoins.rejected, (state, { payload }) => {
+    builder.addCase(fetchCoins.rejected, (state) => {
       state.meta.fetching = false;
     });
 
@@ -63,8 +66,39 @@ const coinsSlice = createSlice({
   },
 });
 
+const globalSlice = createSlice({
+  name: "globalReducer",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    // FETCH
+    builder.addCase(fetchGlobal.pending, (state) => {
+      state.meta.fetching = true;
+    });
+    builder.addCase(fetchGlobal.fulfilled, (state, { payload }) => {
+      state.meta.fetching = false;
+      state.global = payload;
+    });
+    builder.addCase(fetchGlobal.rejected, (state) => {
+      state.meta.fetching = false;
+    });
+
+    // MATCHER
+    builder.addMatcher(isPendingAction, (state) => {
+      state.status = "loading";
+      state.message = "";
+    });
+    builder.addMatcher(isFulfilledAction, (state) => {
+      state.status = "idle";
+    });
+    builder.addMatcher(isRejectedAction, (state, { payload }) => {
+      state.status = "failed";
+      state.message = payload;
+    });
+  },
+});
 export const fetchCoins = createAsyncThunk(
-  "moviesReducer/fetchMovies",
+  "coinsReducer/fetchCoins",
   async (attributes: TFetchCoinsRequest, { rejectWithValue }) => {
     try {
       const { data } = await coinsApi.getCoins(attributes);
@@ -75,4 +109,40 @@ export const fetchCoins = createAsyncThunk(
   }
 );
 
+// export const fetchGlobal = createAsyncThunk(
+//   "coinsReducer/fetchGlobal",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { data } = await globalApi.getGlobal();
+//       return data;
+//     } catch (e: any) {
+//       return rejectWithValue(e.message);
+//     }
+//   }
+// );
+// export const fetchGlobal = createAsyncThunk<
+//   TCoinTest[],
+//   void,
+//   { rejectValue: string }
+// >("coinsReducer/fetchGlobal", async (_, { rejectWithValue }) => {
+//   try {
+//     const { data } = await globalApi.getGlobal();
+//     return data;
+//   } catch (e: any) {
+//     return rejectWithValue(e.message);
+//   }
+// });
+export const fetchGlobal = createAsyncThunk<
+  TGlobal,
+  void,
+  { rejectValue: string }
+>("globalReducer/fetchFriends", async (_, { rejectWithValue }) => {
+  try {
+    const { data } = await globalApi.getGlobal();
+    return data;
+  } catch (e: any) {
+    return rejectWithValue(e.message);
+  }
+});
 export const { actions: coinsActions, reducer: coinsReducer } = coinsSlice;
+export const { actions: globalActions, reducer: globalReducer } = globalSlice;

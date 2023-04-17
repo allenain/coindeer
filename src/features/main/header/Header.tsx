@@ -4,6 +4,8 @@ import SvgSelector from "../../../components/svgSelector/SvgSelector";
 import { IconButton } from "@mui/material";
 import { useThemeDetector } from "../../../hooks";
 import clsx from "clsx";
+import { useAppSelector } from "../../../app/hooks";
+import { findTotalValue } from "../../../utils/utils";
 
 const Header = () => {
   const localStorageTheme = window.localStorage.getItem("theme");
@@ -13,6 +15,11 @@ const Header = () => {
   );
   const [isDarkThemeButton, setIsDarkThemeButton] = useState(theme === "dark");
   const [animation, setAnimation] = useState(false);
+
+  const global = useAppSelector((state) => state.globalReducer.global);
+
+  const total_market_usd = Object.keys(global.data.total_market_cap);
+  const total_volume_usd = Object.keys(global.data.total_volume);
 
   const handleToggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -81,10 +88,16 @@ const Header = () => {
           <h1>Explore Cryptocurrencies</h1>
           <div className={classes["market-data"]}>
             <h2>
-              Total market cap: <p> $1,507,455,642,738</p>
+              Total market cap:{" "}
+              <p>
+                {findTotalValue(total_market_usd, global.data.total_market_cap)}
+              </p>
             </h2>
             <h2>
-              24h Vol: <p> $108,455,642,738</p>
+              Total volume:{" "}
+              <p>
+                {findTotalValue(total_volume_usd, global.data.total_volume)}
+              </p>
             </h2>
           </div>
           <div className={classes.search}>

@@ -20,10 +20,20 @@ const Table: React.FC<ITableProps> = ({ data }) => {
   return (
     <>
       <tr>
-        <td>{data.market_cap_rank}</td>
         <td>
-          <img src={data.image} alt="" /> <h2>{data.name}</h2>{" "}
-          <p>{data.symbol}</p>
+          {data.market_cap_rank}
+          <div onClick={handleSelectFavorite}>
+            <SvgSelector
+              id="star"
+              className={clsx(classes.star, { [classes.favorite]: isFavorite })}
+            />
+          </div>
+        </td>
+        <td>
+          <div>
+            <img src={data.image} alt="" /> <h2>{data.name}</h2>{" "}
+            <p>{data.symbol}</p>
+          </div>
         </td>
         <td>{transformMoney(data.current_price, "$", false)}</td>
         <td
@@ -57,12 +67,6 @@ const Table: React.FC<ITableProps> = ({ data }) => {
         <td>
           <Chart price={data.sparkline_in_7d.price} />
         </td>
-        <div onClick={handleSelectFavorite}>
-          <SvgSelector
-            id="star"
-            className={clsx(classes.star, { [classes.favorite]: isFavorite })}
-          />
-        </div>
       </tr>
     </>
   );

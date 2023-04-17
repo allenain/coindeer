@@ -30,8 +30,14 @@ export const transformMoney = (
   else if (reminder !== "") return `${symbol}${result.join("")}.${reminder}`;
   else return `${symbol}${result.join("")}${reminder}`;
 };
-
-//1251256.39
-//целая часть - 1251256
-//дробная часть - 39
-// ${symbol}
+export const findTotalValue = (
+  keys: string[],
+  array: Record<string, number>
+) => {
+  let result = 0;
+  for (let i = 0, l = keys.length; i < l; i++) {
+    if (keys[i] === "usd") result = array[keys[i]];
+    result = Math.round((result * 100) / 100);
+  }
+  return transformMoney(result, "$", false);
+};
