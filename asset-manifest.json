@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/coindeer/static/css/main.e424c957.css",
+    "main.js": "/coindeer/static/js/main.4e9685f8.js",
+    "static/js/787.abf53fa9.chunk.js": "/coindeer/static/js/787.abf53fa9.chunk.js",
+    "static/media/background-dark.png": "/coindeer/static/media/background-dark.3af126bfc4155ed61003.png",
+    "static/media/background-light2.png": "/coindeer/static/media/background-light2.1db0b83cf9b80ce134a2.png",
+    "index.html": "/coindeer/index.html",
+    "main.e424c957.css.map": "/coindeer/static/css/main.e424c957.css.map",
+    "main.4e9685f8.js.map": "/coindeer/static/js/main.4e9685f8.js.map",
+    "787.abf53fa9.chunk.js.map": "/coindeer/static/js/787.abf53fa9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e424c957.css",
+    "static/js/main.4e9685f8.js"
+  ]
+}
